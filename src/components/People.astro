@@ -1,0 +1,134 @@
+---
+const people = [
+  { name: "Ema Ljačković", url: "https://www.linkedin.com/in/ema-ljackovic-0b073221a/" },
+  { name: "Alexander Varro", url: "https://www.linkedin.com/in/alexandervarro" },
+  { name: "Francesca Cignola", url: "https://www.linkedin.com/in/francescacignola" },
+  { name: "Mihaly Peterfy", url: "https://www.linkedin.com/in/michaelpeterfy/" },
+  { name: "Daniela Raisich", url: "https://www.linkedin.com/in/daniela-r-29b923320/" },
+  { name: "Victor Getz", url: "https://www.linkedin.com/in/victor-getz-359903b2" },
+  { name: "Alexander Lorenz", url: "https://www.linkedin.com/in/alexis-whte" },
+  { name: "Pablo Uribe", url: "https://www.linkedin.com/in/pablouribebotero" },
+];
+---
+
+<section class="people">
+  <div class="people-inner">
+    <p class="people-label">People I love(d) working with:</p>
+    <p class="people-note">(This list is non-exhaustive)</p>
+    <div class="people-grid">
+      {people.map((person) => (
+        <a href={person.url} target="_blank" rel="noopener noreferrer" class="person-link">
+          <span class="person-name">{person.name}</span>
+          <svg class="person-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .people {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .people-inner {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 3rem;
+  }
+
+  .people-label {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .people-note {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 2rem;
+  }
+
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0;
+  }
+
+  .person-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    margin: -0.5px;
+    transition: all 0.35s var(--ease-out-quart);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .person-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-purple), var(--color-blue));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    border-radius: 12px;
+  }
+
+  .person-link:hover::before {
+    opacity: 0.15;
+  }
+
+  .person-link:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .person-name {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+
+  .person-arrow {
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition: all 0.35s var(--ease-out-quart);
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .person-link:hover .person-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  @media (max-width: 768px) {
+    .people {
+      padding: 3rem 1.5rem;
+    }
+
+    .people-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .people-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
