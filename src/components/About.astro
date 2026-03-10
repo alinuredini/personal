@@ -1,46 +1,110 @@
-<section class="about">
-  <div class="about-inner">
-    <p class="about-text">
-      I'm <strong>Ali Nuredini</strong>, Macedonian-born creative, now based somewhere in Germany,
-      specialised in <em>UX Design</em> and <em>DesignOps</em>. I like to talk about eco mobility,
-      progressive politics, the current state of tech, design systems, and much more.
-      I strongly believe in the principle of fair distribution of wealth.
-    </p>
+---
+const pastWork = ["Uniper", "Telekom", "VAIVA", "iits consulting", "HomeportAI", "TourRadar"];
+const services = ["UX Design", "UI Design", "DesignOps", "Design Systems", "User Research", "*Design"];
+---
+
+<section class="about-card">
+  <div class="about-bio">
+    <p class="bio-line">I'm Ali Nuredini, Macedonian-born creative, now based somewhere in Germany, specialised in UX Design and DesignOps.</p>
+    <p class="bio-line">I like to talk about eco mobility, progressive politics, the current state of tech, design systems, and much more. I strongly believe in the principle of fair distribution of wealth.</p>
+  </div>
+
+  <div class="about-columns">
+    <div class="about-col">
+      <span class="col-header">Past work</span>
+      <div class="col-items">
+        {pastWork.map((item) => (
+          <span class="col-item">{item}</span>
+        ))}
+      </div>
+    </div>
+    <div class="about-col">
+      <span class="col-header">Services</span>
+      <div class="col-items">
+        {services.map((item) => (
+          <span class="col-item">{item}</span>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
-  .about {
-    padding: 6rem 2rem;
-    max-width: 1200px;
+  .about-card {
+    width: 100%;
+    max-width: 1100px;
     margin: 0 auto;
+    background: var(--color-blue);
+    border-radius: 20px;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
   }
 
-  .about-inner {
-    max-width: 800px;
+  .about-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
   }
 
-  .about-text {
+  .bio-line {
     font-family: var(--font-sans);
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    font-weight: 300;
-    line-height: 1.7;
-    color: var(--color-text-muted);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-white);
+    line-height: 1.4;
   }
 
-  .about-text strong {
-    color: var(--color-text);
-    font-weight: 500;
+  .about-columns {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    justify-content: center;
   }
 
-  .about-text em {
-    font-style: italic;
-    color: var(--color-green);
+  .about-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    min-width: 160px;
   }
 
-  @media (max-width: 768px) {
-    .about {
-      padding: 4rem 1.5rem;
+  .col-header {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-white-30);
+  }
+
+  .col-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .col-item {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-white);
+  }
+
+  @media (max-width: 900px) {
+    .about-card {
+      padding: 40px;
+    }
+
+    .bio-line {
+      font-size: clamp(18px, 2.5vw, 24px);
+    }
+
+    .about-columns {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
     }
   }
 </style>

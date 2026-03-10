@@ -1,140 +1,74 @@
 <section class="current-work">
-  <div class="current-work-inner">
-    <p class="section-label">These days you can find me working as</p>
-    <div class="roles">
-      <a href="https://8-reasons.com" target="_blank" rel="noopener noreferrer" class="role-card role-card--purple">
-        <div class="role-content">
-          <span class="role-title">DesignOps Lead</span>
-          <span class="role-at">@ 8reasons</span>
-        </div>
-        <svg class="role-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M7 17L17 7" />
-          <path d="M7 7h10v10" />
-        </svg>
-      </a>
-      <a href="https://pistacio.app/" target="_blank" rel="noopener noreferrer" class="role-card role-card--olive">
-        <div class="role-content">
-          <span class="role-title">Co-Founder</span>
-          <span class="role-at">@ Pistacio</span>
-        </div>
-        <svg class="role-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M7 17L17 7" />
-          <path d="M7 7h10v10" />
-        </svg>
-      </a>
-    </div>
+  <div class="cw-left">
+    <p class="cw-label">These days you can find me working as</p>
+  </div>
+  <div class="cw-right">
+    <a href="https://8-reasons.com" target="_blank" rel="noopener noreferrer" class="cw-role">DesignOps Lead @ 8reasons</a>
+    <a href="https://pistacio.app/" target="_blank" rel="noopener noreferrer" class="cw-role">Co-Founder @ Pistacio</a>
   </div>
 </section>
 
 <style>
   .current-work {
-    padding: 4rem 2rem;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1100px;
     margin: 0 auto;
-  }
-
-  .current-work-inner {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 3rem;
-  }
-
-  .section-label {
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: var(--color-text-muted);
-    margin-bottom: 1.5rem;
-  }
-
-  .roles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .role-card {
+    background: var(--color-green);
+    border-radius: 20px;
+    padding: 64px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem 2.5rem;
-    border-radius: 16px;
-    transition: all 0.4s var(--ease-out-expo);
-    position: relative;
-    overflow: hidden;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 48px;
   }
 
-  .role-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 80% 80%, rgba(255,255,255,0.06), transparent 60%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
+  .cw-left {
+    flex: 1;
   }
 
-  .role-card:hover::after {
-    opacity: 1;
+  .cw-label {
+    font-family: var(--font-sans);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--color-purple);
+    line-height: 1.2;
   }
 
-  .role-card--purple {
-    background: var(--color-purple);
-  }
-
-  .role-card--olive {
-    background: var(--color-olive-alt);
-  }
-
-  .role-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  }
-
-  .role-content {
+  .cw-right {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    position: relative;
-    z-index: 1;
+    gap: 8px;
+    text-align: right;
   }
 
-  .role-title {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  .role-at {
+  .cw-role {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 32px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-purple);
+    line-height: 1.2;
+    transition: opacity 0.3s ease;
   }
 
-  .role-arrow {
-    position: relative;
-    z-index: 1;
-    opacity: 0.5;
-    transform: translate(-4px, 4px);
-    transition: all 0.35s var(--ease-out-quart);
+  .cw-role:hover {
+    opacity: 0.6;
   }
 
-  .role-card:hover .role-arrow {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .current-work {
-      padding: 3rem 1.5rem;
+      flex-direction: column;
+      padding: 40px;
+      gap: 32px;
     }
 
-    .roles {
-      grid-template-columns: 1fr;
+    .cw-label,
+    .cw-role {
+      font-size: clamp(22px, 3.5vw, 32px);
     }
 
-    .role-card {
-      padding: 1.5rem 2rem;
+    .cw-right {
+      text-align: left;
     }
   }
 </style>
