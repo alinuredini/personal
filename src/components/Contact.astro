@@ -1,90 +1,130 @@
----
-const links = [
-  { text: "Work inquiries", url: "https://8-reasons.com/kontakt" },
-  { text: "LinkedIn", url: "https://linkedin.com/in/alinuredini" },
-  { text: "Instagram", url: "https://instagram.com/alinuredini" },
-];
----
-
-<section id="contact" class="contact-card">
-  <div class="contact-cta">
-    <h3>Wanna work together? Have a chat?<br />Let's talk!</h3>
-  </div>
-
-  <div class="contact-links">
-    {links.map((link) => (
-      <a href={link.url} target="_blank" rel="noopener noreferrer" class="contact-link">
-        <svg class="arrow-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<section id="contact" class="contact">
+  <div class="contact-inner">
+    <div class="contact-header">
+      <p class="contact-cta">Wanna work together?<br />Have a chat? Let's talk!</p>
+    </div>
+    <div class="contact-links">
+      <a href="https://8-reasons.com/kontakt" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <span class="contact-link-text">Work inquiries</span>
+        <svg class="contact-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M7 17L17 7" />
           <path d="M7 7h10v10" />
         </svg>
-        <span>{link.text}</span>
       </a>
-    ))}
+      <a href="https://linkedin.com/in/alinuredini" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <span class="contact-link-text">LinkedIn</span>
+        <svg class="contact-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7" />
+          <path d="M7 7h10v10" />
+        </svg>
+      </a>
+      <a href="https://instagram.com/alinuredini" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <span class="contact-link-text">Instagram</span>
+        <svg class="contact-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7" />
+          <path d="M7 7h10v10" />
+        </svg>
+      </a>
+    </div>
   </div>
 </section>
 
 <style>
-  .contact-card {
-    width: 100%;
-    max-width: 1100px;
+  .contact {
+    padding: 6rem 2rem 4rem;
+    max-width: 1200px;
     margin: 0 auto;
-    background: var(--color-purple);
-    border-radius: 20px;
-    padding: 64px;
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
   }
 
-  .contact-cta h3 {
-    font-family: var(--font-sans);
-    font-size: 48px;
-    font-weight: 400;
-    color: var(--color-white);
-    line-height: 1.4;
+  .contact-inner {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-cta {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
 
   .contact-links {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0;
   }
 
   .contact-link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 6px;
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--color-white);
-    width: fit-content;
-    transition: opacity 0.3s ease;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.35s var(--ease-out-quart);
+    position: relative;
+  }
+
+  .contact-link:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .contact-link::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    right: -1rem;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, var(--color-rose), transparent 80%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: -1;
+    border-radius: 8px;
+  }
+
+  .contact-link:hover::before {
+    opacity: 0.12;
   }
 
   .contact-link:hover {
-    opacity: 0.7;
+    padding-left: 0.75rem;
   }
 
-  .arrow-icon {
-    width: 15px;
-    height: 15px;
-    flex-shrink: 0;
-    transition: transform 0.3s cubic-bezier(0.44, 0, 0.56, 1);
+  .contact-link-text {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
   }
 
-  .contact-link:hover .arrow-icon {
-    transform: rotate(45deg);
+  .contact-link:hover .contact-link-text {
+    color: var(--color-green);
   }
 
-  @media (max-width: 900px) {
-    .contact-card {
-      padding: 40px;
+  .contact-arrow {
+    opacity: 0;
+    transform: translate(-6px, 6px);
+    transition: all 0.35s var(--ease-out-quart);
+  }
+
+  .contact-link:hover .contact-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  @media (max-width: 768px) {
+    .contact {
+      padding: 4rem 1.5rem 3rem;
     }
 
-    .contact-cta h3 {
-      font-size: clamp(28px, 5vw, 48px);
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
   }
 </style>

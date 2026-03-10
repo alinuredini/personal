@@ -2,58 +2,31 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import People from '../components/People.astro';
 import CurrentWork from '../components/CurrentWork.astro';
 import About from '../components/About.astro';
+import PastWork from '../components/PastWork.astro';
+import Services from '../components/Services.astro';
 import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
-  <div class="page-wrapper">
-    <Header />
-    <main class="main-container">
-      <div class="content">
-        <Hero />
-        <CurrentWork />
-        <About />
-        <Contact />
-      </div>
-    </main>
-  </div>
+  <Header />
+  <main>
+    <Hero />
+    <People />
+    <CurrentWork />
+    <About />
+    <PastWork />
+    <Services />
+    <Contact />
+  </main>
+  <Footer />
 </Layout>
 
 <style>
-  .page-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding-bottom: 50px;
-  }
-
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 50px;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    width: 100%;
-    max-width: 1100px;
-  }
-
-  @media (max-width: 900px) {
-    .main-container {
-      padding: 0 24px;
-    }
-
-    .content {
-      gap: 32px;
-    }
+  main {
+    position: relative;
   }
 </style>
