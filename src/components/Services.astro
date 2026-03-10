@@ -1,0 +1,94 @@
+---
+const services = [
+  "UX Design",
+  "UI Design",
+  "DesignOps",
+  "Design Systems",
+  "User Research",
+  "*Design",
+];
+---
+
+<section class="services">
+  <div class="services-inner">
+    <h2 class="section-heading">Services</h2>
+    <div class="services-grid">
+      {services.map((service) => (
+        <div class="service-pill">
+          <span>{service}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: 2rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-inner {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 3rem;
+  }
+
+  .section-heading {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .service-pill {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-text);
+    transition: all 0.35s var(--ease-out-quart);
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-pill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 100px;
+    background: linear-gradient(135deg, var(--color-blue), var(--color-purple));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .service-pill:hover::before {
+    opacity: 0.25;
+  }
+
+  .service-pill:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .service-pill span {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    .services {
+      padding: 1.5rem 1.5rem 3rem;
+    }
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+const tickerItems = Array(12).fill("® 2026 CONTACT");
+---
+
+<header class="header">
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      {tickerItems.map((item) => (
+        <a href="#contact" class="ticker-item">
+          <span>{item}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .ticker-bar {
+    overflow: hidden;
+    padding: 10px 0;
+    cursor: pointer;
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 2rem;
+    white-space: nowrap;
+    animation: ticker 20s linear infinite;
+    width: max-content;
+  }
+
+  .ticker-item {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .ticker-item:hover {
+    color: var(--color-text);
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .ticker-bar:hover .ticker-track {
+    animation-play-state: paused;
+  }
+</style>

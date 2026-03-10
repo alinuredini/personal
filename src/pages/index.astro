@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import People from '../components/People.astro';
+import CurrentWork from '../components/CurrentWork.astro';
+import About from '../components/About.astro';
+import PastWork from '../components/PastWork.astro';
+import Services from '../components/Services.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <Hero />
+    <People />
+    <CurrentWork />
+    <About />
+    <PastWork />
+    <Services />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    position: relative;
+  }
+</style>
